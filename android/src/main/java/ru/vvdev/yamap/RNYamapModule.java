@@ -72,7 +72,8 @@ public class RNYamapModule extends ReactContextBaseJavaModule {
         runOnUiThread(new Thread(new Runnable() {
             @Override
             public void run() {
-                successCb.invoke(null);
+                String locale = I18nManagerFactory.getLocale();
+                successCb.invoke(locale);
             }
         }));
     }

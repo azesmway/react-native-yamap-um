@@ -463,7 +463,7 @@ public class YamapView extends MapView implements UserLocationObjectListener, Ca
         routeMetadata.putInt("routeIndex", routeIndex);
         final WritableArray stops = new WritableNativeArray();
         for (RouteStop stop : section.getStops()) {
-            stops.pushString(String.valueOf(stop.getPosition()));
+            stops.pushString(stop.getMetadata().getStop().getName());
         }
         routeMetadata.putArray("stops", stops);
         if (data.getTransports() != null) {
