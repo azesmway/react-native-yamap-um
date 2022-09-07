@@ -46,7 +46,8 @@ import com.yandex.mapkit.map.PolylineMapObject;
 import com.yandex.mapkit.map.VisibleRegion;
 import com.yandex.mapkit.mapview.MapView;
 import com.yandex.mapkit.transport.TransportFactory;
-import com.yandex.mapkit.transport.masstransit.MasstransitOptions;
+import com.yandex.mapkit.transport.masstransit.FilterVehicleTypes;
+import com.yandex.mapkit.transport.masstransit.TransitOptions;
 import com.yandex.mapkit.transport.masstransit.MasstransitRouter;
 import com.yandex.mapkit.transport.masstransit.PedestrianRouter;
 import com.yandex.mapkit.transport.masstransit.Route;
@@ -304,7 +305,7 @@ public class YamapView extends MapView implements UserLocationObjectListener, Ca
             pedestrianRouter.requestRoutes(_points, new TimeOptions(), listener);
             return;
         }
-        MasstransitOptions masstransitOptions = new MasstransitOptions(new ArrayList<String>(), vehicles, new TimeOptions());
+        TransitOptions masstransitOptions = new TransitOptions(FilterVehicleTypes.NONE.value, new TimeOptions());
         masstransitRouter.requestRoutes(_points, masstransitOptions, listener);
     }
 
@@ -462,7 +463,7 @@ public class YamapView extends MapView implements UserLocationObjectListener, Ca
         routeMetadata.putInt("routeIndex", routeIndex);
         final WritableArray stops = new WritableNativeArray();
         for (RouteStop stop : section.getStops()) {
-            stops.pushString(stop.getStop().getName());
+            stops.pushString(String.valueOf(stop.getPosition()));
         }
         routeMetadata.putArray("stops", stops);
         if (data.getTransports() != null) {
