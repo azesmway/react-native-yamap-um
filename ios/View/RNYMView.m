@@ -527,6 +527,8 @@
         if (userLocationAccuracyStrokeColor) {
             [circle setStrokeColor:userLocationAccuracyStrokeColor];
         }
+
+        [circle setFillColor:[UIColor clearColor]];
         [circle setStrokeWidth:userLocationAccuracyStrokeWidth];
     }
 }

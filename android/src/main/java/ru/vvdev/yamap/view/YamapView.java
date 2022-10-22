@@ -670,6 +670,8 @@ public class YamapView extends MapView implements UserLocationObjectListener, Ca
             if (userLocationAccuracyStrokeColor != 0) {
                 circle.setStrokeColor(userLocationAccuracyStrokeColor);
             }
+
+            circle.setFillColor(userLocationAccuracyFillColor);
             circle.setStrokeWidth(userLocationAccuracyStrokeWidth);
         }
     }
